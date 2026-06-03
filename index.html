@@ -8,6 +8,17 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
 <style>
+:root {
+  --yellow: #FFC907;
+  --blue: #2E9DF7;
+  --light-blue: #8BD1CB;
+  --green: #4FCB53;
+  --orange: #FF902A;
+  --red: #F5402C;
+  --dark-green: #159A48;
+  --pink: #F16061;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -15,29 +26,34 @@
   font-family: 'Poppins', sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   color: #333;
 }
 
-/* ================= NAVBAR ================= */
+/* NAVBAR */
 .navbar {
-  position: absolute;
+  position: fixed;
   top: 20px;
   left: 50%;
   transform: translateX(-50%);
   width: 90%;
-  background: #efe3c6;
+  background: #fff;
   border-radius: 12px;
   padding: 15px 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  z-index: 10;
-  flex-wrap: wrap;
+  z-index: 1000;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
 }
 
 .logo {
-  font-weight: 600;
+  font-weight: 700;
+  color: var(--blue);
 }
 
 .nav-links {
@@ -48,15 +64,28 @@ body {
 .nav-links a {
   text-decoration: none;
   color: #333;
+  transition: 0.3s;
+}
+
+.nav-links a:hover {
+  color: var(--blue);
 }
 
 .give-btn {
-  background: #f4c86a;
-  padding: 8px 14px;
+  background: var(--yellow);
+  padding: 8px 16px;
   border-radius: 10px;
+  font-weight: 600;
 }
 
-/* ================= HERO ================= */
+/* HAMBURGER */
+.menu-toggle {
+  display: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* HERO */
 .hero {
   min-height: 100vh;
   background: url('images/hero.jpg') center/cover no-repeat;
@@ -82,10 +111,9 @@ body {
 
 .hero h1 {
   font-size: 60px;
-  line-height: 1.1;
 }
 
-/* ================= CARD ================= */
+/* CARD */
 .card {
   position: absolute;
   left: 80px;
@@ -95,6 +123,11 @@ body {
   padding: 20px;
   border-radius: 16px;
   z-index: 3;
+  transition: 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
 }
 
 .toggle {
@@ -105,10 +138,11 @@ body {
   flex: 1;
   padding: 10px;
   border: none;
+  cursor: pointer;
 }
 
 .active {
-  background: #f4c86a;
+  background: var(--yellow);
 }
 
 .inactive {
@@ -127,35 +161,53 @@ body {
   padding: 10px;
   text-align: center;
   border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
 }
 
-.option.active {
-  background: #f4c86a;
+.option:hover {
+  background: var(--yellow);
 }
 
 .join-btn {
   width: 100%;
   padding: 12px;
-  background: #f4c86a;
+  background: var(--blue);
+  color: white;
   border: none;
   border-radius: 10px;
-  margin-top: 10px;
+  cursor: pointer;
+  transition: 0.3s;
 }
 
-/* ================= STORY ================= */
-.story {
-  padding: 80px 20px;
+.join-btn:hover {
+  background: #1f86e0;
+}
+
+/* SECTIONS */
+section {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: 0.8s;
+}
+
+section.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.story, .impact-story, .call-to-action {
+  padding: 100px 20px;
   text-align: center;
 }
 
 .story h2 {
+  color: var(--blue);
   margin-bottom: 20px;
 }
 
-/* ================= IMPACT ================= */
 .impact-story {
-  padding: 80px 20px;
-  background: #f9f9f9;
+  background: var(--light-blue);
 }
 
 .impact-content {
@@ -171,25 +223,41 @@ body {
   border-radius: 12px;
 }
 
-/* ================= CTA ================= */
 .call-to-action {
-  padding: 80px 20px;
-  text-align: center;
-  background: #f4c86a;
+  background: var(--yellow);
 }
 
 .donate-button {
   display: inline-block;
   margin-top: 20px;
   padding: 12px 20px;
-  background: #000;
+  background: var(--blue);
   color: white;
-  text-decoration: none;
   border-radius: 8px;
+  text-decoration: none;
 }
 
-/* ================= RESPONSIVE ================= */
+/* MOBILE */
 @media (max-width: 768px) {
+
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-links {
+    position: absolute;
+    top: 70px;
+    right: 0;
+    background: white;
+    flex-direction: column;
+    width: 200px;
+    display: none;
+    padding: 20px;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
 
   .hero h1 {
     font-size: 36px;
@@ -203,37 +271,27 @@ body {
 
   .impact-content {
     flex-direction: column;
-    text-align: center;
-  }
-
-  .impact-image {
-    width: 100%;
-  }
-
-  .navbar {
-    flex-direction: column;
-    gap: 10px;
   }
 }
-
 </style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
 <div class="navbar">
   <div class="logo">charity: water</div>
-  <div class="nav-links">
-    <a href="#">About Us</a>
+
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+  <div class="nav-links" id="navLinks">
+    <a href="#">About</a>
     <a href="#">News</a>
     <a href="#">Take Action</a>
-    <a href="#">Log in</a>
+    <a href="#">Login</a>
     <a href="#" class="give-btn">GIVE 💧</a>
   </div>
 </div>
 
-<!-- HERO -->
 <section class="hero">
   <div class="hero-content">
     <h1>Changing Lives With<br>Every Drop</h1>
@@ -248,7 +306,7 @@ body {
     <div class="options">
       <div class="option">$10</div>
       <div class="option">$20</div>
-      <div class="option active">$40</div>
+      <div class="option">$40</div>
       <div class="option">$100</div>
     </div>
 
@@ -256,31 +314,41 @@ body {
   </div>
 </section>
 
-<!-- STORY -->
 <section class="story">
   <h2>Our Story</h2>
-  <p>
-    We believe access to clean water is a basic human right. Our mission is to bring safe drinking water to communities around the world through sustainable and impactful solutions.
-  </p>
+  <p>We bring clean water to communities in need worldwide.</p>
 </section>
 
-<!-- IMPACT -->
 <section class="impact-story">
   <h2>Real Impact: Meet Amina</h2>
   <div class="impact-content">
     <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b" class="impact-image">
-    <p>
-      Amina used to walk miles every day to collect water. Now her village has clean water, allowing her to go to school and live a healthier life.
-    </p>
+    <p>Amina now has access to clean water thanks to donations like yours.</p>
   </div>
 </section>
 
-<!-- CTA -->
 <section class="call-to-action">
   <h2>Make a Difference</h2>
-  <p>Your support helps bring clean water to those in need.</p>
+  <p>Your support saves lives.</p>
   <a href="#" class="donate-button">Donate Now</a>
 </section>
+
+<script>
+function toggleMenu() {
+  document.getElementById("navLinks").classList.toggle("active");
+}
+
+// Scroll animations
+const sections = document.querySelectorAll("section");
+
+window.addEventListener("scroll", () => {
+  sections.forEach(sec => {
+    if (sec.getBoundingClientRect().top < window.innerHeight - 100) {
+      sec.classList.add("show");
+    }
+  });
+});
+</script>
 
 </body>
 </html>
