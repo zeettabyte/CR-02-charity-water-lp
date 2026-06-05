@@ -52,22 +52,35 @@ body {
   border-radius: 10px;
 }
 
-/* HERO */
+/* HERO (UPDATED) */
 .hero {
   min-height: 100vh;
-  background: url('images/water.jpg') center/cover no-repeat;
   position: relative;
   display: flex;
   justify-content: flex-start;
   align-items: center;
   padding-left: 80px;
+  overflow: hidden;
 }
 
+/* NEW IMAGE BACKGROUND */
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* DARK OVERLAY */
 .hero::after {
   content: "";
   position: absolute;
   inset: 0;
   background: rgba(0,0,0,0.45);
+  z-index: 1;
 }
 
 .hero-content {
@@ -263,6 +276,9 @@ body {
 </div>
 
 <section class="hero">
+  <!-- NEW IMAGE BACKGROUND -->
+  <img src="images/water.jpg" class="hero-bg" alt="Water background">
+
   <div class="hero-content">
     <h1>Changing Lives With<br>Every Drop</h1>
   </div>
@@ -296,8 +312,10 @@ body {
 
   <div class="impact-content">
     <img src="images/amina.jpg" class="impact-image" alt="Amina with clean water">
-    <p> Amina used to walk miles every day to collect unsafe water for her family. 
-    Now, with access to clean water, she has time to go to school and focus on her future.</p>
+    <p>
+      Amina used to walk miles every day to collect unsafe water for her family. 
+      Now, with access to clean water, she has time to go to school and focus on her future.
+    </p>
   </div>
 </section>
 
