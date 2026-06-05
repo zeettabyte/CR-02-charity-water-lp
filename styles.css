@@ -7,68 +7,30 @@ body {
   background-color: #f4f8fb;
 }
 
-/* FIX GREY EDGE ISSUE */
-html, body {
-  height: 100%;
-  background: #000;
-}
-
-/* RESET SECTION */
+/* RESET SECTION CONFLICTS */
 section {
   margin: 0;
   padding: 0;
+  background: none;
 }
 
-/* ================= NAVBAR ================= */
-.navbar {
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  background: #efe3c6;
-  border-radius: 12px;
-  padding: 15px 30px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  z-index: 10;
-  flex-wrap: wrap;
-}
-
-.nav-links {
-  display: flex;
-  gap: 20px;
-}
-
-.nav-links a {
-  text-decoration: none;
-  color: #333;
-}
-
-.give-btn {
-  background: #f4c86a;
-  padding: 8px 14px;
-  border-radius: 10px;
-}
-
-/* ================= HERO (FIXED) ================= */
+/* ================= HERO ================= */
 .hero {
   position: relative;
   min-height: 100vh;
 
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
-  text-align: center;
+
+  text-align: left;
 
   color: white;
   overflow: hidden;
-  width: 100%;
+  padding-left: 80px;
 }
 
-/* HERO IMAGE */
+/* HERO IMAGE BACKGROUND */
 .hero-bg {
   position: absolute;
   inset: 0;
@@ -78,7 +40,7 @@ section {
   z-index: 0;
 }
 
-/* OVERLAY */
+/* DARK OVERLAY */
 .hero::after {
   content: "";
   position: absolute;
@@ -87,27 +49,23 @@ section {
   z-index: 1;
 }
 
-/* HERO TEXT FIX */
+/* HERO TEXT */
 .hero-content {
   position: relative;
   z-index: 2;
-  text-align: center;
-  max-width: 900px;
-  padding: 0 20px;
+  text-align: left;
 }
 
 .hero h1 {
-  font-size: 3rem;
+  font-size: 60px;
   margin: 0;
 }
 
-/* ================= CARD FIX ================= */
+/* ================= CARD ================= */
 .card {
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: 60px;
-
+  left: 80px;
+  bottom: 80px;
   width: 320px;
   background: white;
   padding: 20px;
@@ -115,6 +73,7 @@ section {
   z-index: 3;
 }
 
+/* TOGGLE */
 .toggle {
   display: flex;
 }
@@ -128,6 +87,7 @@ section {
 .active { background: #f4c86a; }
 .inactive { background: #eee; }
 
+/* OPTIONS */
 .options {
   display: grid;
   grid-template-columns: repeat(2,1fr);
@@ -146,6 +106,7 @@ section {
   background: #f4c86a;
 }
 
+/* BUTTON */
 .join-btn {
   width: 100%;
   padding: 12px;
@@ -157,59 +118,100 @@ section {
 
 /* ================= STORY ================= */
 .story {
-  background: #8BD1CB;
-  color: #222;
+  padding: 80px 20px;
+  background: url('https://images.unsplash.com/photo-1508780709619-79562169bc64') center/cover no-repeat;
+  color: white;
   text-align: center;
-  padding: 60px 20px;
+  position: relative;
+}
+
+.story::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+}
+
+.story * {
+  position: relative;
+  z-index: 2;
 }
 
 /* ================= IMPACT ================= */
 .impact-story {
-  background: #2E9DF7;
+  padding: 80px 20px;
+  background: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb') center/cover no-repeat;
+  position: relative;
   color: white;
-  padding: 60px 20px;
-  text-align: center;
+}
+
+.impact-story::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+}
+
+.impact-story * {
+  position: relative;
+  z-index: 2;
 }
 
 .impact-content {
   display: flex;
+  gap: 40px;
   align-items: center;
-  justify-content: center;
-  gap: 30px;
-  max-width: 900px;
+  max-width: 1000px;
   margin: auto;
-  background: rgba(0,0,0,0.25);
+  backdrop-filter: blur(6px);
+  background: rgba(0,0,0,0.3);
   padding: 20px;
   border-radius: 12px;
 }
 
 .impact-image {
   width: 300px;
-  border-radius: 10px;
+  border-radius: 12px;
 }
 
 /* ================= CTA ================= */
 .call-to-action {
-  background: #FFC907;
+  padding: 80px 20px;
   text-align: center;
-  padding: 60px 20px;
+  background: #f4c86a;
 }
 
 .donate-button {
   display: inline-block;
-  background: #4FCB53;
+  margin-top: 20px;
+  padding: 12px 20px;
+  background: black;
   color: white;
-  padding: 14px 28px;
-  border-radius: 8px;
   text-decoration: none;
-  font-weight: bold;
+  border-radius: 8px;
 }
 
-/* ================= MOBILE ================= */
+/* ================= RESPONSIVE ================= */
 @media (max-width: 768px) {
 
+  .hero {
+    padding-left: 20px;
+    justify-content: center;
+    text-align: center;
+  }
+
   .hero h1 {
-    font-size: 2rem;
+    font-size: 36px;
+  }
+
+  .hero-content {
+    text-align: center;
+  }
+
+  .card {
+    position: static;
+    margin: 20px auto;
+    width: 90%;
   }
 
   .impact-content {
@@ -218,6 +220,11 @@ section {
   }
 
   .impact-image {
-    width: 90%;
+    width: 100%;
+  }
+
+  .navbar {
+    flex-direction: column;
+    gap: 10px;
   }
 }
