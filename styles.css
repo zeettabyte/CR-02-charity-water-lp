@@ -11,10 +11,6 @@ Secondary Colors:
 - Red:        #F5402C
 - Dark Green: #159A48
 - Pink:       #F16061
-
-Fonts:
-- Proxima Nova
-- Avenir
 */
 
 /* Base Styles */
@@ -35,47 +31,61 @@ section {
   padding: 24px 16px;
 }
 
-/* HERO SECTION (FIXED + CENTERED) */
+/* =========================
+   HERO (FIXED - IMG ONLY)
+   ========================= */
 .hero {
   position: relative;
   min-height: 100vh;
 
-  /* PERFECT CENTERING */
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
   text-align: center;
 
   color: #fff;
-
-  /* FIXED IMAGE */
-  background-image: url('images/water.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
-  /* overlay */
-  background-blend-mode: darken;
-  background-color: rgba(46, 157, 247, 0.45);
+  overflow: hidden;
 }
 
-/* Hero Text */
+/* HERO BACKGROUND IMAGE (NEW SYSTEM) */
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* DARK OVERLAY */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  z-index: 1;
+}
+
+/* HERO TEXT */
 .hero h1 {
   font-size: 2.5em;
   font-weight: bold;
   letter-spacing: 1px;
   margin-bottom: 15px;
   text-shadow: 0 2px 8px rgba(0,0,0,0.15);
+  position: relative;
+  z-index: 2;
 }
 
 .hero p {
   font-size: 1.2em;
   margin-top: 0;
   text-shadow: 0 1px 4px rgba(0,0,0,0.12);
+  position: relative;
+  z-index: 2;
 }
 
-/* Story Section */
+/* STORY SECTION */
 .story {
   background-color: #8BD1CB;
   color: #222;
@@ -83,14 +93,14 @@ section {
   padding: 30px 20px;
 }
 
-/* Headings */
+/* HEADINGS */
 h2 {
   color: #2E9DF7;
   margin-top: 0;
   font-weight: bold;
 }
 
-/* CTA Section */
+/* CTA SECTION */
 .call-to-action {
   background-color: #FFC907;
   color: #222;
@@ -98,7 +108,7 @@ h2 {
   padding: 30px 20px;
 }
 
-/* Impact Image */
+/* IMPACT IMAGE */
 .impact-image {
   width: 100%;
   max-width: 320px;
@@ -107,7 +117,7 @@ h2 {
   box-shadow: 0 2px 8px rgba(46, 157, 247, 0.10);
 }
 
-/* Donate Button */
+/* DONATE BUTTON */
 .donate-button {
   display: inline-block;
   background-color: #4FCB53;
@@ -129,7 +139,18 @@ h2 {
   transform: translateY(-2px) scale(1.04);
 }
 
-/* Section spacing */
+/* IMPACT LAYOUT */
+.impact-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  text-align: left;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* SECTION SPACING */
 section {
   margin-bottom: 20px;
 }
@@ -149,8 +170,7 @@ section {
   }
 
   .story,
-  .call-to-action,
-  .donation-section {
+  .call-to-action {
     padding: 14px 8px;
   }
 
@@ -162,22 +182,5 @@ section {
   .impact-image {
     width: 90%;
     max-width: 220px;
-  }
-}
-
-/* DESKTOP */
-@media (min-width: 601px) {
-  .impact-content {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 28px;
-    text-align: left;
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .impact-image {
-    width: 300px;
   }
 }
