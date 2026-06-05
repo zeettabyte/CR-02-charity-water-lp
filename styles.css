@@ -1,39 +1,20 @@
-/* charity: water Brand Colors & Fonts
-
-Primary Colors:
-- Yellow:     #FFC907
-- Blue:       #2E9DF7
-
-Secondary Colors:
-- Light Blue: #8BD1CB
-- Green:      #4FCB53
-- Orange:     #FF902A
-- Red:        #F5402C
-- Dark Green: #159A48
-- Pink:       #F16061
-*/
-
 /* Base Styles */
 body {
-  background-color: #f4f8fb;
-  font-family: 'Avenir', 'Proxima Nova', Arial, sans-serif;
   margin: 0;
   padding: 0;
+  font-family: 'Avenir', 'Proxima Nova', Arial, sans-serif;
   color: #222;
+  background-color: #f4f8fb;
 }
 
-/* Section Styling */
+/* RESET SECTION CONFLICTS */
 section {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 8px rgba(46, 157, 247, 0.07);
-  margin: 24px 10px;
-  padding: 24px 16px;
+  margin: 0;
+  padding: 0;
+  background: none;
 }
 
-/* =========================
-   HERO (FIXED - IMG ONLY)
-   ========================= */
+/* ================= HERO ================= */
 .hero {
   position: relative;
   min-height: 100vh;
@@ -43,11 +24,11 @@ section {
   align-items: center;
   text-align: center;
 
-  color: #fff;
+  color: white;
   overflow: hidden;
 }
 
-/* HERO BACKGROUND IMAGE (NEW SYSTEM) */
+/* HERO IMAGE BACKGROUND */
 .hero-bg {
   position: absolute;
   inset: 0;
@@ -62,125 +43,85 @@ section {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45);
+  background: rgba(0,0,0,0.45);
   z-index: 1;
 }
 
 /* HERO TEXT */
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
 .hero h1 {
-  font-size: 2.5em;
-  font-weight: bold;
-  letter-spacing: 1px;
-  margin-bottom: 15px;
-  text-shadow: 0 2px 8px rgba(0,0,0,0.15);
-  position: relative;
-  z-index: 2;
+  font-size: 3rem;
+  margin: 0;
 }
 
-.hero p {
-  font-size: 1.2em;
-  margin-top: 0;
-  text-shadow: 0 1px 4px rgba(0,0,0,0.12);
-  position: relative;
-  z-index: 2;
-}
-
-/* STORY SECTION */
+/* ================= STORY ================= */
 .story {
-  background-color: #8BD1CB;
+  background: #8BD1CB;
   color: #222;
   text-align: center;
-  padding: 30px 20px;
+  padding: 60px 20px;
 }
 
-/* HEADINGS */
-h2 {
-  color: #2E9DF7;
-  margin-top: 0;
-  font-weight: bold;
-}
-
-/* CTA SECTION */
-.call-to-action {
-  background-color: #FFC907;
-  color: #222;
+/* ================= IMPACT ================= */
+.impact-story {
+  background: #2E9DF7;
+  color: white;
+  padding: 60px 20px;
   text-align: center;
-  padding: 30px 20px;
 }
 
-/* IMPACT IMAGE */
-.impact-image {
-  width: 100%;
-  max-width: 320px;
-  border-radius: 10px;
-  margin-bottom: 16px;
-  box-shadow: 0 2px 8px rgba(46, 157, 247, 0.10);
-}
-
-/* DONATE BUTTON */
-.donate-button {
-  display: inline-block;
-  background-color: #4FCB53;
-  color: #fff;
-  padding: 14px 32px;
-  text-decoration: none;
-  border-radius: 6px;
-  font-weight: bold;
-  font-size: 1.1em;
-  margin-top: 18px;
-  box-shadow: 0 2px 8px rgba(79, 203, 83, 0.10);
-  transition: background 0.3s, transform 0.2s;
-  border: none;
-  cursor: pointer;
-}
-
-.donate-button:hover {
-  background-color: #159A48;
-  transform: translateY(-2px) scale(1.04);
-}
-
-/* IMPACT LAYOUT */
 .impact-content {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 28px;
-  text-align: left;
-  max-width: 800px;
-  margin: 0 auto;
+  gap: 30px;
+  max-width: 900px;
+  margin: auto;
+  background: rgba(0,0,0,0.25);
+  padding: 20px;
+  border-radius: 12px;
 }
 
-/* SECTION SPACING */
-section {
-  margin-bottom: 20px;
+.impact-image {
+  width: 300px;
+  border-radius: 10px;
 }
 
-/* MOBILE */
-@media (max-width: 600px) {
-  .hero {
-    padding: 32px 8px;
-  }
+/* ================= CTA ================= */
+.call-to-action {
+  background: #FFC907;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.donate-button {
+  display: inline-block;
+  background: #4FCB53;
+  color: white;
+  padding: 14px 28px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
 
   .hero h1 {
-    font-size: 1.4em;
-  }
-
-  .hero p {
-    font-size: 1em;
-  }
-
-  .story,
-  .call-to-action {
-    padding: 14px 8px;
+    font-size: 2rem;
   }
 
   .impact-content {
-    display: block;
+    flex-direction: column;
     text-align: center;
   }
 
   .impact-image {
     width: 90%;
-    max-width: 220px;
   }
 }
